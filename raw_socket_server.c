@@ -52,6 +52,12 @@ int create_socket(char *device){
         }
         return sock_fd;
 }
+
+void dump(BYTE *data, int len){
+	for(int i=0; i<len; i++)
+		printf("%x ", data[i]);
+}
+
 int main(int argc, char ** argv){
         int sock_fd =0;
         BYTE data[150];
@@ -60,6 +66,15 @@ int main(int argc, char ** argv){
                 printf("No SOCK FOUND\n");
                 return 0;
         }
-        printf("%d", recv(sock_fd, data, 150, 0));
-	
+	while(1){
+		memset(data, 0x00, sizeof(data));
+		int data_len = recv(sock_fd, data, 150, 0);
+		if (data_len>0)
+			dump(data, data_len);
+		else
+			printf("ERROR: Not found, %d", data_len);
+	}
+        //int data_len =  recv(sock_fd, data, 1500, 0);
+	//if (data_len>0)
+	//	dump(data, data_len);
 }

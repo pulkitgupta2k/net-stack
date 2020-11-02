@@ -22,7 +22,9 @@
 #include <sys/types.h>
 #include <time.h>      
 
+#define ETHER_TYPE 0x8898
 typedef unsigned char BYTE;
+
 
 int create_socket(char *device){
 	int sock_fd;
@@ -32,7 +34,7 @@ int create_socket(char *device){
         memset(&ifr, 0, sizeof(ifr));                                                      
         memset(&sll, 0, sizeof(sll));                                                      
                                                                                            
-        sock_fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));                           
+        sock_fd = socket(AF_PACKET, SOCK_RAW, htons(ETHER_TYPE));                           
                                                                                            
         if (sock_fd == 0){                                                                 
                 printf("ERROR CREATING SOCKET...");                                        
@@ -45,7 +47,7 @@ int create_socket(char *device){
         }                                                                                  
         sll.sll_family = AF_PACKET;                                                        
         sll.sll_ifindex = ifr.ifr_ifindex;                                                 
-        sll.sll_protocol = htons(ETH_P_ALL);
+        sll.sll_protocol = htons(ETHER_TYPE);
 
         if (bind(sock_fd, (struct sockaddr *) &sll, sizeof(sll)) == -1){
                 printf("ERROR BINDING\n");
@@ -56,6 +58,7 @@ int create_socket(char *device){
 void dump(BYTE *data, int len){
 	for(int i=0; i<len; i++)
 		printf("%x ", data[i]);
+	printf("\n");
 }
 
 int main(int argc, char ** argv){

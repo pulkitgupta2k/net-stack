@@ -22,6 +22,7 @@
 #include <sys/types.h>
 #include <time.h>
 
+#define ETHER_TYPE 0x8898
 typedef unsigned char  BYTE;    /* 8-bit   */
 
 int create_socket(char *device){

@@ -55,10 +55,18 @@ int create_socket(char *device){
         return sock_fd;
 }
 
-void dump(BYTE *data, int len){
-	for(int i=0; i<len; i++)
-		printf("%x ", data[i]);
+void dump(BYTE *data, int len, char fileName[]){
+	BYTE wData[150];
+	int i;
+	for(i=0; data[i+14]!=0x00; i++){
+		printf("%x ", data[i+14]);
+		wData[i] = data[i+14];
+	}
 	printf("\n");
+	FILE *fp;
+	fp = fopen(fileName, "wb+");
+	fwrite(&wData, i, 1, fp);
+	fclose(fp);
 }
 
 int main(int argc, char ** argv){
@@ -73,7 +81,7 @@ int main(int argc, char ** argv){
 		memset(data, 0x00, sizeof(data));
 		int data_len = recv(sock_fd, data, 150, 0);
 		if (data_len>0)
-			dump(data, data_len);
+			dump(data, data_len, "output.txt");
 		else
 			printf("ERROR: Not found, %d", data_len);
 	}

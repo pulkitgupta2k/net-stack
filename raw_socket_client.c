@@ -25,14 +25,26 @@
 #define ETHER_TYPE 0x8898
 typedef unsigned char  BYTE;    /* 8-bit   */
 
+struct fileProtocol{
+	unsigned long long int seq;
+	BYTE data[130];
+	int isEnd;
+};
+
+struct fileProtocolWrapper{
+	BYTE dstMac[6];
+	BYTE srcMac[6];
+	BYTE eType[2];
+	struct fileProtocol *fileData;
+};
+
 int create_socket(char *device){
 	int sock_fd;
 	struct ifreq ifr;
 	struct sockaddr_ll sll;
-
 	memset(&ifr, 0, sizeof(ifr));
 	memset(&sll, 0, sizeof(sll));
-
+	
 	sock_fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
 
 	if (sock_fd == 0){
@@ -60,6 +72,15 @@ void addByte(BYTE dest[], BYTE src[], int i, int s){
 		dest[i++] = src[ctr++];
 }
 
+void parseProtocol(struct fileProtocolWrapper *wrapper, BYTE data[]){
+	addByte(data, wrapper->dstMac, 0, 6);
+	addByte(data, wrapper->srcMac, 6, 6);
+	addByte(data, wrapper->eType, 12, 2);
+	addByte(data, (BYTE*) &wrapper->fileData->seq, 14, 5);
+	addByte(data, (BYTE*) &wrapper->fileData->isEnd, 18, 1);
+	addByte(data, wrapper->fileData->data, 20, 130);
+}
+
 void readFile(char fileName[], BYTE data[]){
 	FILE *fp;
 	fp = fopen(fileName, "rb");
@@ -79,16 +100,24 @@ void readFile(char fileName[], BYTE data[]){
 
 int main(int argc, char ** argv){
 	int sock_fd =0;
-	BYTE dst_mac[6] = {0x08, 0x00, 0x27, 0xc5, 0x0d, 0x1c};
-	BYTE src_mac[6] = {0x08, 0x00, 0x27, 0x5c, 0x65, 0x26};
-	BYTE type[2] = {0x88, 0x98};
+	struct fileProtocol fp;
+
+	fp.seq = 10000000;
+	fp.isEnd = 1;
+	readFile("test.txt", fp.data);	
+	
+	struct fileProtocolWrapper fpw ={ {0x08, 0x00, 0x27, 0xc5, 0x0d, 0x1c}, 
+					{0x08, 0x00, 0x27, 0x5c, 0x65, 0x26}, 
+					{0x88, 0x98}, 
+					&fp};
+	
 	BYTE data[150];
-	BYTE fileData[130];
-	readFile("test.txt", fileData);
-	addByte(data, dst_mac, 0, 6);
-	addByte(data, src_mac, 6, 6);
-	addByte(data, type, 12, 2);
-	addByte(data, fileData,14, 130);
+	parseProtocol(&fpw, data);
+
+	//addByte(data, dst_mac, 0, 6);
+	//addByte(data, src_mac, 6, 6);
+	//addByte(data, type, 12, 2);
+	//addByte(data, fileData,14, 130);
 	//strncat(data, dst_mac, 6);
 	//strncat(data, src_mac, 6);
 	//strncat(data, dst_mac, 2);

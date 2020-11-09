@@ -25,17 +25,13 @@
 #include "customProtocol.h"
 
 void dump(BYTE *data, int len, char fileName[]){
-	BYTE wData[150];
-	int i;
-	for(i=0; data[i+14]!=0x00; i++){
-		printf("%x ", data[i+14]);
-		wData[i] = data[i+14];
-	}
-	printf("\n");
-	FILE *fp;
-	fp = fopen(fileName, "wb+");
-	fwrite(&wData, i, 1, fp);
-	fclose(fp);
+	struct fileProtocol fp;
+	recvProtocol(data, &fp);
+	FILE *file;
+	file = fopen(fileName, "wb+");
+	fwrite(&fp.data, sizeof(fp.data), 1, file);
+	fclose(file);
+	printf("wrote file\n");
 }
 
 int main(int argc, char ** argv){
@@ -47,10 +43,10 @@ int main(int argc, char ** argv){
                 return 0;
         }
 	while(1){
-		memset(data, 0x00, sizeof(data));
 		int data_len = recv(sock_fd, data, 150, 0);
-		if (data_len>0)
+		if (data_len>0){
 			dump(data, data_len, "output.txt");
+		}
 		else
 			printf("ERROR: Not found, %d", data_len);
 	}

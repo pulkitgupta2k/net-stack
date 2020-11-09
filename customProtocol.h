@@ -13,6 +13,12 @@ struct fileProtocolWrapper{
         struct fileProtocol *fileData;
 };
 
+void recvProtocol(BYTE *data, struct fileProtocol *fp){
+        memcpy(&fp->seq, data+14, 5);
+        memcpy(&fp->isEnd, data+19, 1);
+        memcpy(&fp->data, data+20, sizeof(fp->data));
+};
+
 int create_socket(char *device){
         int sock_fd;
         struct ifreq ifr;

@@ -29,7 +29,7 @@ void parseProtocol(struct fileProtocolWrapper *wrapper, BYTE data[]){
 	addByte(data, wrapper->srcMac, 6, 6);
 	addByte(data, wrapper->eType, 12, 2);
 	addByte(data, (BYTE*) &wrapper->fileData->seq, 14, 5);
-	addByte(data, (BYTE*) &wrapper->fileData->isEnd, 18, 1);
+	addByte(data, (BYTE*) &wrapper->fileData->isEnd, 19, 1);
 	addByte(data, wrapper->fileData->data, 20, 130);
 }
 
@@ -58,7 +58,7 @@ int main(int argc, char ** argv){
 	fp.isEnd = 1;
 	readFile("test.txt", fp.data);	
 	
-	struct fileProtocolWrapper fpw ={ {0x08, 0x00, 0x27, 0xc5, 0x0d, 0x1c}, 
+	struct fileProtocolWrapper fpw ={ {0x08, 0x00, 0x27, 0x5c, 0x65, 0x26}, 
 					{0x08, 0x00, 0x27, 0x5c, 0x65, 0x26}, 
 					{0x88, 0x98}, 
 					&fp};

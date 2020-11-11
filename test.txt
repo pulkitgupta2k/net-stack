@@ -1,39 +1,208 @@
-hello world
-dsf
-sdf
-sdf
-sd
-gaeth
-r
-ejh
-etyje7tjirohnjj4o erjohnr t\h
-rthrt
-h
-sfth
-a
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="/static/commodore/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/static/custom/star_effect.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/static/custom/custom.css" type="text/css" media="screen" />
+<script type='text/javascript' src='/static/custom/testimonial.js'></script>
+<link rel="stylesheet" href="/static/custom/testimonial.css" type="text/css" media="screen" />
+<link rel="icon" href="/static/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hi, I'm Pulkit Gupta!</title>
+<style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 .07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
 
-
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-a
-a
-a
-a
-a
-aaaaaaaaaaaaaaaaa
-a
-a
-
-aaaaaaaaaaaaaaaaaaaaaaaaaa
-a
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-a
-a
-
-a
-
-a
-
-aa
-a
-a
-
+        body.custom-background {
+            background-color: #070707;
+        }
+    </style>
+<style id='wp-block-library-inline-css' type='text/css'>
+        .has-text-align-justify {
+            text-align: justify;
+        }
+    </style>
+<link rel='stylesheet' id='elementor-frontend-css' href='/static/elementor/assets/css/frontend.min4315.css?ver=2.9.8' type='text/css' media='all' />
+</head>
+<body class="home page-template-default page custom-background has-navmenu has-megamenu has_sidebar elementor-default elementor-page">
+<div id='stars'></div>
+<div id='stars2'></div>
+<div id='stars3'></div>
+<div id="container">
+<header class="header-home">
+<h1><a href="/">pulkit_gupta_2k</a></h1>
+<h2 class="wheat">A computer science undergrad.
+<br> Hello There!
+</h2>
+<h3>
+<div>
+<ul class="menu">
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item">
+<a href="/" aria-current="page">Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/projects">Projects</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/about">More about
+me</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/post">Posts</a>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/testimonial">Testimonials</a>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/contact">Contact
+Me</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/fun">:)</a>
+</li>
+</ul>
+</div>
+</h3>
+</header>
+<div id="wrapper">
+<section class="content">
+<article class="page type-page status-publish hentry">
+<section>
+<div class="elementor elementor-inner">
+<div class="elementor-section-wrap">
+<section class="has_eae_slider elementor-element elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-row">
+</div>
+</div>
+</section>
+<section class="has_eae_slider elementor-element elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-row">
+<div class="has_eae_slider elementor-element elementor-column elementor-col-33 elementor-top-column" data-element_type="column">
+<div class="elementor-column-wrap  elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-widget elementor-widget-heading" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">
+Latest Posts</h2>
+</div>
+</div>
+<div class="elementor-element eae-pl-img-align-left elementor-widget elementor-widget-wts-postlist" data-element_type="widget" data-widget_type="wts-postlist.default">
+<div class="elementor-widget-container">
+<div class="wts-eae-pl-wrapper">
+<ul>
+<li>
+<div class="eae-pl-content-box-wrapper">
+<h3 class="eae-pl-title wheat"><a href="/post/0" class="wheat">Passed DevNet Associate (200-901 DEVASC)</a>
+</h3>
+<div class="eae-pl-content-box">
+Another one!
+It was an interesting experience preparing for this certification. It cover...
+</div>
+<div class="eae-pl-readmore wheat">
+<a href="/post/0" class="wheat">Read
+More</a>
+</div>
+</div>
+</li>
+<li>
+<div class="eae-pl-content-box-wrapper">
+<h3 class="eae-pl-title wheat"><a href="/post/1" class="wheat">Study material and notes for DEVNET Associate (200-901 DEVASC)</a>
+</h3>
+<div class="eae-pl-content-box">
+Hello everyone!
+I&#39;m preparing for the DEVNET Associate exam and maintaining my notes and re...
+</div>
+<div class="eae-pl-readmore wheat">
+<a href="/post/1" class="wheat">Read
+More</a>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="has_eae_slider elementor-element elementor-column elementor-col-66 elementor-top-column" data-element_type="column">
+<div class="elementor-column-wrap  elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-widget elementor-widget-text-editor">
+<div class="elementor-widget-container">
+<div class="elementor-text-editor elementor-clearfix">
+<p align="justify">
+Welcome to Pulkit&#39;s website. Pulkit is a Computer Engineering Junior at Thapar Institute of Engineering and Technology, Patiala.
+</p>
+<p align="justify">
+He has a deep interest in Computer Networks, Cyber Security and Automation. He&#39;ll love to help you regarding this.
+</p>
+<p align="justify">
+He&#39;s a Cisco Certified Network Associate, Cisco Certified DevNet Associate and a Certified Ethical Hacker. He spends most of his day sleeping and goofing around and spends his night learning amazing things from this gigantic network of connected machines.
+</p>
+<p align="justify">
+He loves to play video games and binge on cult classics. It goes without mentioning that he&#39;s such a geek :P
+</p>
+<p>&nbsp;</p>
+</div>
+<div>
+<a href="https://open.spotify.com/track/4LD5dhQ3kqpqe14sGPDtBC" class="spotify">
+<p class="spotify">
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="#1DB954" style="margin-right: 0.5rem;">
+<path d="M19.098 10.638c-3.868-2.297-10.248-2.508-13.941-1.387-.593.18-1.22-.155-1.399-.748-.18-.593.154-1.22.748-1.4 4.239-1.287 11.285-1.038 15.738 1.605.533.317.708 1.005.392 1.538-.316.533-1.005.709-1.538.392zm-.126 3.403c-.272.44-.847.578-1.287.308-3.225-1.982-8.142-2.557-11.958-1.399-.494.15-1.017-.129-1.167-.623-.149-.495.13-1.016.624-1.167 4.358-1.322 9.776-.682 13.48 1.595.44.27.578.847.308 1.286zm-1.469 3.267c-.215.354-.676.465-1.028.249-2.818-1.722-6.365-2.111-10.542-1.157-.402.092-.803-.16-.895-.562-.092-.403.159-.804.562-.896 4.571-1.045 8.492-.595 11.655 1.338.353.215.464.676.248 1.028zm-5.503-17.308c-6.627 0-12 5.373-12 12 0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.627-5.372-12-12-12z" />
+</svg>
+I'm Listening to <b>Scream</b>
+by
+Michael Jackson,
+Janet Jackson
+</p>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<hr class="clearfix" />
+</section>
+<hr class="clearfix" />
+</article>
+</section>
+<nav>
+<aside class="widget">
+<header>
+<h2 class="widgettitle">Find me on:</h2>
+</header>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white">
+<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+</svg>
+<a data-theme="dark" data-border-color="#e8e8e8" data-tweet-limit="2" data-lang="EN" data-chrome="transparent" href="https://github.com/pulkitgupta2k">GitHub</a><br><br>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white">
+<path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+</svg>
+<a data-theme="dark" data-border-color="#e8e8e8" data-tweet-limit="2" data-lang="EN" data-chrome="transparent" href="https://www.linkedin.com/in/pulkit-gupta-2k/">LinkedIn</a><br><br>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 64 64" fill="white">
+<path d="M49.487 15.034c-6.86.033-12.074 4.57-14.026 11.8-3.275-5.04-5.83-10.805-7.295-15.672l-7.22.034.1 19.138a6.861 6.861 0 0 1-13.722.065l-.1-19.138L0 11.296.1 30.435C.128 38.377 6.474 44.67 14.24 44.63s14.055-6.386 14.02-14.33l-.015-3.25c1.456 2.88 3.276 5.94 5.276 8.64l-4.415 21.144 7.4-.034 3.18-15.362c2.896 1.793 6.15 2.86 9.94 2.842C57.57 44.245 64.04 37.717 64 29.41c-.036-7.946-6.568-14.413-14.512-14.377zm.103 21.846c-2.888.013-5.782-1.236-8.138-3.213l.708-2.9v-.182c.528-3.074 2.126-8.316 7.542-8.34a7.244 7.244 0 0 1 7.257 7.188c-.163 4.153-3.577 7.42-7.37 7.437z" />
+</svg>
+<a data-theme="dark" data-border-color="#e8e8e8" data-tweet-limit="2" data-lang="EN" data-chrome="transparent" href="https://www.upwork.com/o/profiles/users/~01ade1858fedd50ace/">UpWork</a><br><br>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white">
+<path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.44.249l-1.654 5.207c-2.838.034-5.409.798-7.3 2.025-.474-.438-1.103-.712-1.799-.712-1.465 0-2.656 1.187-2.656 2.646 0 .97.533 1.811 1.317 2.271-.052.282-.086.567-.086.857 0 3.911 4.808 7.093 10.719 7.093s10.72-3.182 10.72-7.093c0-.274-.029-.544-.075-.81.832-.447 1.405-1.312 1.405-2.318zm-17.224 1.816c0-.868.71-1.575 1.582-1.575.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574-1.582-.706-1.582-1.574zm9.061 4.669c-.797.793-2.048 1.179-3.824 1.179l-.013-.003-.013.003c-1.777 0-3.028-.386-3.824-1.179-.145-.144-.145-.379 0-.523.145-.145.381-.145.526 0 .65.647 1.729.961 3.298.961l.013.003.013-.003c1.569 0 2.648-.315 3.298-.962.145-.145.381-.144.526 0 .145.145.145.379 0 .524zm-.189-3.095c-.872 0-1.581-.706-1.581-1.574 0-.868.709-1.575 1.581-1.575s1.581.707 1.581 1.575-.709 1.574-1.581 1.574z" />
+</svg>
+<a data-theme="dark" data-border-color="#e8e8e8" data-tweet-limit="2" data-lang="EN" data-chrome="transparent" href="https://www.reddit.com/user/clumsy_sausage">Reddit</a><br><br>
+</aside>
+</nav>
+</div>
+<footer>
+<p class="wheat">&#34;In my experience there is no such thing as luck&#34; - Obi-Wan Kenobi</p>
+</footer>
+</div>
+</body>
+</html>

@@ -33,22 +33,6 @@ void parseProtocol(struct fileProtocolWrapper *wrapper, BYTE data[]){
 	addByte(data, wrapper->fileData->data, 20, 130);
 }
 
-void readFile(char fileName[], BYTE data[]){
-	FILE *fp;
-	fp = fopen(fileName, "rb");
-	char ch;
-	if (fp == NULL){
-		perror("ERROR while opening the file \n");
-		exit(EXIT_FAILURE);
-	}
-	int i=0;
-	memset(data, 0, 150);
-	while((ch = fgetc(fp)) != EOF)
-		data[i++] = (BYTE)ch;
-	data[i] = 0x00;
-	fclose(fp);
-	return;
-}
 
 void senderWrapper(int sock, struct fileProtocolWrapper *fpw, char fileName[]){
 	FILE *file = NULL;
@@ -59,10 +43,17 @@ void senderWrapper(int sock, struct fileProtocolWrapper *fpw, char fileName[]){
 
 	if (file != NULL){
 		while( (bytesRead = fread(fpw->fileData->data, 1,130, file)) >0 ){
+			printf("%d ", bytesRead);
 			fpw->fileData->seq++;
 			parseProtocol(fpw, data);
 			write(sock, data, 150);
-		}	
+			memset(fpw->fileData->data, 0, 130);
+		}
+		fpw->fileData->seq++;
+		memset(fpw->fileData->data,0, 130);
+		fpw->fileData->isEnd = 1;
+		parseProtocol(fpw, data);
+		write(sock, data, 150);	
 	}
 	fclose(file);
 	return;
@@ -73,16 +64,13 @@ int main(int argc, char ** argv){
 	struct fileProtocol fp;
 
 	fp.seq = 0;
-	fp.isEnd = 1;
-	//readFile("test.txt", fp.data);	
+	fp.isEnd = 0;
 	
 	struct fileProtocolWrapper fpw ={ {0x08, 0x00, 0x27, 0x5c, 0x65, 0x26}, 
-					{0x08, 0x00, 0x27, 0x5c, 0x65, 0x26}, 
+					{0x08, 0x00, 0x27, 0x56, 0x65, 0x26}, 
 					{0x88, 0x98}, 
 					&fp};
 	
-	//BYTE data[150];
-	//parseProtocol(&fpw, data);
 
 	sock_fd = create_socket(argv[1]);
 	if( !(sock_fd)){
@@ -90,5 +78,4 @@ int main(int argc, char ** argv){
 		return 0;
 	}
 	senderWrapper(sock_fd, &fpw, "test.txt");
-	//write(sock_fd, data, 150);
 }

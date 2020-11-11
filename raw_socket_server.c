@@ -21,17 +21,27 @@
 #include <string.h>
 #include <sys/types.h>
 #include <time.h>      
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include<fcntl.h>
 
 #include "customProtocol.h"
 
-void dump(BYTE *data, int len, char fileName[]){
+int dump(BYTE *data, int len, char fileName[]){
 	struct fileProtocol fp;
+	int fd;
 	recvProtocol(data, &fp);
-	FILE *file;
-	file = fopen(fileName, "wb+");
-	fwrite(&fp.data, sizeof(fp.data), 1, file);
-	fclose(file);
+	//FILE *file;
+	//file = fopen(fileName, "wb+");
+	fd = open(fileName, O_RDWR|O_CREAT, 0777);
+	pwrite(fd, &fp.data, sizeof(fp.data), fp.seq*130);
+	printf("%d ", fp.seq*130);
+	//fclose(file);
+	close(fd);
 	printf("wrote file\n");
+	//printf("%d", fp.isEnd);	
+	return 1;
 }
 
 int main(int argc, char ** argv){
@@ -42,15 +52,13 @@ int main(int argc, char ** argv){
                 printf("No SOCK FOUND\n");
                 return 0;
         }
-	while(1){
+	int flag = 1;
+	while(flag){
 		int data_len = recv(sock_fd, data, 150, 0);
 		if (data_len>0){
-			dump(data, data_len, "output.txt");
+			flag = dump(data, data_len, "output.txt");
 		}
 		else
 			printf("ERROR: Not found, %d", data_len);
 	}
-        //int data_len =  recv(sock_fd, data, 1500, 0);
-	//if (data_len>0)
-	//	dump(data, data_len);
 }

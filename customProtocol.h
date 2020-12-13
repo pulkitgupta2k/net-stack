@@ -25,11 +25,13 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <string.h> 
 
 #define ETHER_TYPE 0x8898  // Ethernet Type for custom protocol
+#define ETHER_TYPE_BYTE { 0x88, 0x98 }
 #define lli unsigned long long int
-typedef unsigned char BYTE;
 
+typedef unsigned char BYTE;
 
 struct fileProtocol{
 	// L3 fragment
@@ -97,4 +99,20 @@ void parseProtocol(struct fileProtocolWrapper *wrapper, BYTE data[]){
 	addByte(data, (BYTE*) &wrapper->fileData->seq, 14, 5);
 	addByte(data, (BYTE*) &wrapper->fileData->isEnd, 19, 1);
 	addByte(data, wrapper->fileData->data, 20, 130);
+}
+
+int getMac(char interace[], BYTE mac[6]){
+	//returns the mac address for the interface
+    struct ifreq s;
+    int fd = socket(PF_INET, SOCK_DGRAM, IPPROTO_IP);
+
+    strcpy(s.ifr_name, interace);
+    if (0 == ioctl(fd, SIOCGIFHWADDR, &s)) {
+        for (int i = 0; i < 6; ++i)
+            mac[i] = s.ifr_addr.sa_data[i];
+        close(fd);
+        return 0;
+    }
+    close(fd);
+    return 1;
 }

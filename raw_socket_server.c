@@ -7,7 +7,7 @@ int dump(BYTE *data, int len, char fileName[]){
 	//FILE *file;
 	//file = fopen(fileName, "wb+");
 	fd = open(fileName, O_RDWR|O_CREAT, 0777);
-	pwrite(fd, &fp.data, sizeof(fp.data), fp.seq*130);
+	pwrite(fd, &fp.data, sizeof(fp.data), fp.seq*(DATA_LEN-20));
 	printf("%d ", fp.seq*130);
 	//fclose(file);
 	close(fd);
@@ -18,7 +18,7 @@ int dump(BYTE *data, int len, char fileName[]){
 
 int main(int argc, char ** argv){
 	int sock_fd =0;
-	BYTE data[150];
+	BYTE data[DATA_LEN];
 	sock_fd = create_socket(argv[1]);
 	if( !(sock_fd)){
 			printf("No SOCK FOUND\n");
@@ -28,7 +28,7 @@ int main(int argc, char ** argv){
 	// wait for start signal
 	int startSend = 0;
 	while(!startSend){
-		int data_len = recv(sock_fd, data, 150, 0);
+		int data_len = recv(sock_fd, data, DATA_LEN, 0);
 		struct fileProtocol fp;
 		if (data_len>0){
 			recvProtocol(data, &fp);
@@ -48,14 +48,14 @@ int main(int argc, char ** argv){
 					&fp};
 					
 	parseProtocol(&fpw, data);
-	write(sock_fd, data, 150);	
+	write(sock_fd, data, DATA_LEN);	
 
 	// receiving part
 	fp.isEnd = 0;
 	fp.seq = 0;
 	int isEnd = 0;
 	while(!isEnd){
-		int data_len = recv(sock_fd, data, 150, 0);
+		int data_len = recv(sock_fd, data, DATA_LEN, 0);
 		if (data_len>0){
 			isEnd = dump(data, data_len, "output.txt");
 		}

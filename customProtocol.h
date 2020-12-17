@@ -29,6 +29,7 @@
 
 #define ETHER_TYPE 0x8898  // Ethernet Type for custom protocol
 #define ETHER_TYPE_BYTE { 0x88, 0x98 }
+#define DATA_LEN 150
 #define lli unsigned long long int
 
 typedef unsigned char BYTE;
@@ -36,7 +37,7 @@ typedef unsigned char BYTE;
 struct fileProtocol{
 	// L3 fragment
 	lli seq;
-	BYTE data[130];
+	BYTE data[DATA_LEN-20];
 	int isEnd;
 };
 struct fileProtocolWrapper{
@@ -98,7 +99,7 @@ void parseProtocol(struct fileProtocolWrapper *wrapper, BYTE data[]){
 	addByte(data, wrapper->eType, 12, 2);
 	addByte(data, (BYTE*) &wrapper->fileData->seq, 14, 5);
 	addByte(data, (BYTE*) &wrapper->fileData->isEnd, 19, 1);
-	addByte(data, wrapper->fileData->data, 20, 130);
+	addByte(data, wrapper->fileData->data, 20, DATA_LEN-20);
 }
 
 int getMac(char interace[], BYTE mac[6]){

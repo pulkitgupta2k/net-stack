@@ -4,24 +4,24 @@
 
 void senderWrapper(int sock, struct fileProtocolWrapper *fpw, char fileName[]){
 	FILE *file = NULL;
-	BYTE data[150];
+	BYTE data[DATA_LEN];
 	size_t bytesRead=0;	
 
 	file = fopen(fileName, "rb");
 
 	if (file != NULL){
-		while( (bytesRead = fread(fpw->fileData->data, 1,130, file)) >0 ){
+		while( (bytesRead = fread(fpw->fileData->data, 1,DATA_LEN-20, file)) >0 ){
 			printf("%d ", bytesRead);
 			fpw->fileData->seq++;
 			parseProtocol(fpw, data);
-			write(sock, data, 150);
-			memset(fpw->fileData->data, 0, 130);
+			write(sock, data, DATA_LEN);
+			memset(fpw->fileData->data, 0, DATA_LEN-20);
 		}
 		fpw->fileData->seq++;
-		memset(fpw->fileData->data,0, 130);
+		memset(fpw->fileData->data,0, DATA_LEN-20);
 		fpw->fileData->isEnd = 1;
 		parseProtocol(fpw, data);
-		write(sock, data, 150);	
+		write(sock, data, DATA_LEN);	
 	}
 	fclose(file);
 	return;
@@ -49,15 +49,15 @@ int main(int argc, char ** argv){
 	}
 	// send syn signal
 
-	BYTE data[150];
+	BYTE data[DATA_LEN];
 	fp.isEnd = 1;
 	fp.seq = 0;
 	parseProtocol(&fpw, data);
-	write(sock_fd, data, 150);	
+	write(sock_fd, data, DATA_LEN);	
 	// wait for ack signal
 	int startSend = 0;
 	while(!startSend){
-		int data_len = recv(sock_fd, data, 150, 0);
+		int data_len = recv(sock_fd, data, DATA_LEN, 0);
 		struct fileProtocol fp;
 		if (data_len>0){
 			recvProtocol(data, &fp);

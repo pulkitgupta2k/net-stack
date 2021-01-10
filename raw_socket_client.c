@@ -1,7 +1,5 @@
 #include "customProtocol.h"
 
-
-
 void senderWrapper(int sock, struct fileProtocolWrapper *fpw, char fileName[]){
 	FILE *file = NULL;
 	BYTE data[DATA_LEN];
@@ -10,6 +8,7 @@ void senderWrapper(int sock, struct fileProtocolWrapper *fpw, char fileName[]){
 	file = fopen(fileName, "rb");
 
 	if (file != NULL){
+		memset(fpw->fileData->data, 0, DATA_LEN-20);
 		while( (bytesRead = fread(fpw->fileData->data, 1,DATA_LEN-20, file)) >0 ){
 			printf("%d ", bytesRead);
 			fpw->fileData->seq++;
